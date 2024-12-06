@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.ZoneMapper">
+    <select id="selectAll" resultType="org.example.entity.Zone">
+        SELECT id, name FROM zones
+    </select>
+    
+    <select id="selectById" parameterType="java.lang.Integer" resultType="org.example.entity.Zone">
+        SELECT id, name FROM zones WHERE id = #{id}
+    </select>
+    
+    <insert id="insert" parameterType="org.example.entity.Zone">
+        INSERT INTO zones (name) VALUES (#{name})
+    </insert>
+    
+    <update id="update" parameterType="org.example.entity.Zone">
+        UPDATE zones SET name = #{name} WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM zones WHERE id = #{id}
+    </delete>
+</mapper> 
