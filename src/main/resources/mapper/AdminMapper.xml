@@ -3,6 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.mapper.AdminMapper">
     <select id="login" parameterType="org.example.entity.Admin" resultType="org.example.entity.Admin">
+        <bind name="debugLog" value="@java.lang.System@out.println('SQL参数 - 用户名: [' + username + '], 密码: [' + password + ']')"/>
         SELECT id, username, password 
         FROM admin 
         WHERE username = #{username} AND password = #{password}

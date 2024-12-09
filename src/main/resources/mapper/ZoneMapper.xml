@@ -21,4 +21,8 @@
     <delete id="deleteById" parameterType="java.lang.Integer">
         DELETE FROM zones WHERE id = #{id}
     </delete>
+    
+    <select id="selectByName" resultType="org.example.entity.Zone">
+        SELECT id, name FROM zones WHERE name = #{name}
+    </select>
 </mapper> 

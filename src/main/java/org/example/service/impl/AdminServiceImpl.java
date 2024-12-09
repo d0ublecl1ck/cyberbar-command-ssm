@@ -13,9 +13,17 @@ public class AdminServiceImpl implements AdminService {
     
     @Override
     public Admin login(String username, String password) {
+        System.out.println("【Service层】准备查询 - 用户名: [" + username + "], 密码: [" + password + "]");
+        
         Admin admin = new Admin();
         admin.setUsername(username);
         admin.setPassword(password);
-        return adminMapper.login(admin);
+        
+        System.out.println("【Service层】Admin对象 - 用户名: [" + admin.getUsername() + "], 密码: [" + admin.getPassword() + "]");
+        
+        Admin result = adminMapper.login(admin);
+        System.out.println("【Service层】查询结果: " + (result != null ? "找到匹配记录" : "未找到匹配记录"));
+        
+        return result;
     }
 } 

@@ -1,8 +1,15 @@
 package org.example.entity;
 
+/**
+ * 管理员实体类
+ * 用于存储网吧管理员的基本信息
+ */
 public class Admin {
+    /** 管理员ID */
     private Integer id;
+    /** 管理员用户名 */
     private String username;
+    /** 管理员密码 */
     private String password;
     
     // Getters and Setters
@@ -28,5 +35,14 @@ public class Admin {
     
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 } 

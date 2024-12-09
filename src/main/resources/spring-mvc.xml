@@ -11,12 +11,35 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="org.example"/>
-    <mvc:annotation-driven/>
     
-    <!-- 添加Swagger资源处理 -->
+    <!-- 配置消息转换器 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    
+    <!-- CORS配置 -->
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                    allowed-origins="http://localhost:3000"
+                    allowed-methods="GET, POST, PUT, DELETE, OPTIONS"
+                    allowed-headers="*"
+                    allow-credentials="true"
+                    max-age="3600"/>
+    </mvc:cors>
+    
+    <!-- Swagger资源 -->
     <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
     
-    <!-- 配置Swagger的Bean -->
     <bean class="org.example.config.SwaggerConfig"/>
 </beans> 

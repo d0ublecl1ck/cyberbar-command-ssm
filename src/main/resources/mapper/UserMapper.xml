@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.UserMapper">
+    
+    <insert id="insert" parameterType="org.example.entity.User">
+        INSERT INTO users (name, identity_card, phone_number, balance, login_password)
+        VALUES (#{name}, #{identityCard}, #{phoneNumber}, #{balance}, #{loginPassword})
+    </insert>
+    
+    <delete id="deleteById">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+    
+    <update id="update" parameterType="org.example.entity.User">
+        UPDATE users
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="identityCard != null">identity_card = #{identityCard},</if>
+            <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
+            <if test="balance != null">balance = #{balance},</if>
+            <if test="loginPassword != null">login_password = #{loginPassword},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="machineId != null">machine_id = #{machineId},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+    
+    <select id="search" resultType="org.example.entity.User">
+        SELECT * FROM users
+        WHERE name LIKE CONCAT('%', #{keyword}, '%')
+        OR identity_card LIKE CONCAT('%', #{keyword}, '%')
+        OR phone_number LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+    
+    <select id="countTotal" resultType="int">
+        SELECT COUNT(*) FROM users
+    </select>
+    
+    <select id="countByStatus" resultType="int">
+        SELECT COUNT(*) FROM users WHERE status = #{status}
+    </select>
+    
+    <select id="selectAll" resultType="org.example.entity.User">
+        SELECT * FROM users
+    </select>
+    
+    <select id="selectByCondition" resultType="org.example.entity.User">
+        SELECT * FROM users
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="minBalance != null">
+                AND balance >= #{minBalance}
+            </if>
+            <if test="maxBalance != null">
+                AND balance &lt;= #{maxBalance}
+            </if>
+        </where>
+    </select>
+</mapper> 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.MachineMapper">
+    <select id="selectAll" resultType="org.example.entity.Machine">
+        SELECT id, zone_id, price, status, online_user_id 
+        FROM machines
+    </select>
+    
+    <select id="selectById" parameterType="java.lang.Integer" resultType="org.example.entity.Machine">
+        SELECT id, zone_id, price, status, online_user_id 
+        FROM machines 
+        WHERE id = #{id}
+    </select>
+    
+    <select id="selectByZoneId" parameterType="java.lang.Integer" resultType="org.example.entity.Machine">
+        SELECT id, zone_id, price, status, online_user_id 
+        FROM machines 
+        WHERE zone_id = #{zoneId}
+    </select>
+    
+    <insert id="insert" parameterType="org.example.entity.Machine">
+        INSERT INTO machines (zone_id, price, status, online_user_id)
+        VALUES (#{zoneId}, #{price}, #{status}, #{onlineUserId})
+    </insert>
+    
+    <update id="update" parameterType="org.example.entity.Machine">
+        UPDATE machines 
+        SET zone_id = #{zoneId},
+            price = #{price},
+            status = #{status},
+            online_user_id = #{onlineUserId}
+        WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM machines WHERE id = #{id}
+    </delete>
+    
+    <select id="countTotal" resultType="int">
+        SELECT COUNT(*) FROM machines
+    </select>
+    
+    <select id="countByStatus" resultType="int">
+        SELECT COUNT(*) FROM machines WHERE status = #{status}
+    </select>
+    
+    <select id="selectByCondition" resultType="org.example.entity.Machine">
+        SELECT id, zone_id, price, status, online_user_id 
+        FROM machines
+        <where>
+            <if test="zoneId != null">
+                AND zone_id = #{zoneId}
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="minPrice != null">
+                AND price >= #{minPrice}
+            </if>
+            <if test="maxPrice != null">
+                AND price &lt;= #{maxPrice}
+            </if>
+        </where>
+    </select>
+</mapper> 
