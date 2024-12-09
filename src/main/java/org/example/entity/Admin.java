@@ -1,15 +1,20 @@
 package org.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
 /**
  * 管理员实体类
  * 用于存储网吧管理员的基本信息
  */
+@Data
 public class Admin {
     /** 管理员ID */
     private Integer id;
     /** 管理员用户名 */
     private String username;
     /** 管理员密码 */
+    @JsonIgnore
     private String password;
     
     // Getters and Setters
