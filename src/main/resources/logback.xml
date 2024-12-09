@@ -22,7 +22,7 @@
     </appender>
 
     <!-- 设置Spring日志级别 -->
-    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework" level="DEBUG"/>
     
     <!-- 设置MyBatis日志级别 -->
     <logger name="org.example.mapper" level="DEBUG"/>
