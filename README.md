@@ -32,7 +32,7 @@ src/
 │   └── resources/
 │       ├── mapper/           # MyBatis映射文件
 │       ├── applicationContext.xml  # Spring配置
-│       ├── logback.xml      # 日志配置
+│       ├── logback.xml       # 日志配置
 │       └── spring-mvc.xml   # SpringMVC配置
 ```
 
@@ -221,6 +221,10 @@ java -jar target/your-application.jar
 - 日志位置：logs/application.log
 - 日志级别：INFO（可在logback.xml中调整）
 - 日志轮转：按天轮转，保留30天
+- 日志格式：时间戳 [线程] 日志级别 类名 - 消息
+- 字符编码：UTF-8（支持中文日志）
+- 日志分割：按大小（10MB）和时间（每天）自动分割
+- 控制台和文件双重输出
 
 ### 性能优化
 - 使用连接池管理数据库连接
@@ -245,6 +249,12 @@ java -jar target/your-application.jar
 - 初始版本发布
 - 实现基础功能模块
 - 完成API文档
+
+### v1.1.0
+- 将日志系统从Logback迁移到Log4j2
+- 优化日志配置，解决中文乱码问题
+- 统一日志输出格式
+- 增强日志管理功能
 
 ## 联系与支持
 

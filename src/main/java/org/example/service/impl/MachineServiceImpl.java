@@ -6,6 +6,7 @@ import org.example.service.MachineService;
 import org.example.dto.MachineQueryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.math.BigDecimal;
 
 import java.util.List;
 
@@ -57,5 +58,40 @@ public class MachineServiceImpl implements MachineService {
     @Override
     public List<Machine> getMachinesByCondition(MachineQueryDTO queryDTO) {
         return machineMapper.selectByCondition(queryDTO);
+    }
+
+    @Override
+    public int getTotalMachinesCountByZone(Integer zoneId) {
+        return machineMapper.getTotalMachinesCountByZone(zoneId);
+    }
+
+    @Override
+    public int getCountByStatusAndZone(String status, Integer zoneId) {
+        return machineMapper.getCountByStatusAndZone(status, zoneId);
+    }
+
+    @Override
+    public BigDecimal getAveragePrice() {
+        return machineMapper.getAveragePrice();
+    }
+
+    @Override
+    public BigDecimal getMaxPrice() {
+        return machineMapper.getMaxPrice();
+    }
+
+    @Override
+    public BigDecimal getMinPrice() {
+        return machineMapper.getMinPrice();
+    }
+
+    @Override
+    public int clearZoneId(Integer zoneId) {
+        return machineMapper.updateZoneIdToNull(zoneId);
+    }
+
+    @Override
+    public List<Machine> getMachinesWithoutZone(MachineQueryDTO queryDTO) {
+        return machineMapper.selectByNullZoneId(queryDTO);
     }
 } 

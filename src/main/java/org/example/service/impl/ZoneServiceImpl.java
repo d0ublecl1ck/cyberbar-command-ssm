@@ -3,10 +3,12 @@ package org.example.service.impl;
 import org.example.entity.Zone;
 import org.example.mapper.ZoneMapper;
 import org.example.service.ZoneService;
+import org.example.service.MachineService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +18,9 @@ public class ZoneServiceImpl implements ZoneService {
     
     @Autowired
     private ZoneMapper zoneMapper;
+    
+    @Autowired
+    private MachineService machineService;
     
     @Override
     public List<Zone> getAllZones() {
@@ -38,7 +43,9 @@ public class ZoneServiceImpl implements ZoneService {
     }
     
     @Override
+    @Transactional
     public int deleteZone(Integer id) {
+        machineService.clearZoneId(id);
         return zoneMapper.deleteById(id);
     }
     

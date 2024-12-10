@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.math.BigDecimal;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Api(tags = "用户管理接口")
 @RestController
@@ -44,19 +47,26 @@ public class UserController {
     
     @ApiOperation("搜索用户")
     @GetMapping("/search")
-    public ResponseEntity<List<User>> searchUsers(
+    public ResponseEntity<PageInfo<User>> searchUsers(
             @ApiParam("关键字") @RequestParam(required = false) String keyword,
             @ApiParam("用户状态") @RequestParam(required = false) String status,
+            @ApiParam("最小余额") @RequestParam(required = false) BigDecimal minBalance,
+            @ApiParam("最大余额") @RequestParam(required = false) BigDecimal maxBalance,
             @ApiParam("页码") @RequestParam(defaultValue = "1") Integer pageNum,
             @ApiParam("每页大小") @RequestParam(defaultValue = "10") Integer pageSize) {
         
         UserQueryDTO queryDTO = new UserQueryDTO();
         queryDTO.setKeyword(keyword);
         queryDTO.setStatus(status);
+        queryDTO.setMinBalance(minBalance);
+        queryDTO.setMaxBalance(maxBalance);
         queryDTO.setPageNum(pageNum);
         queryDTO.setPageSize(pageSize);
         
-        return ResponseEntity.ok(userService.getUsersByCondition(queryDTO));
+        PageHelper.startPage(pageNum, pageSize);
+        List<User> users = userService.getUsersByCondition(queryDTO);
+        
+        return ResponseEntity.ok(new PageInfo<>(users));
     }
     
     @ApiOperation("获取用户统计信息")

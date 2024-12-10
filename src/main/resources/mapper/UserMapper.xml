@@ -3,8 +3,27 @@
 <mapper namespace="org.example.mapper.UserMapper">
     
     <insert id="insert" parameterType="org.example.entity.User">
-        INSERT INTO users (name, identity_card, phone_number, balance, login_password)
-        VALUES (#{name}, #{identityCard}, #{phoneNumber}, #{balance}, #{loginPassword})
+        INSERT INTO users (
+            name, 
+            identity_card, 
+            phone_number, 
+            balance, 
+            login_password, 
+            status,
+            machine_id, 
+            last_on_computer_time, 
+            last_off_computer_time
+        ) VALUES (
+            #{name}, 
+            #{identityCard}, 
+            #{phoneNumber}, 
+            #{balance}, 
+            #{loginPassword}, 
+            #{status},
+            #{machineId}, 
+            #{lastOnComputerTime}, 
+            #{lastOffComputerTime}
+        )
     </insert>
     
     <delete id="deleteById">
@@ -25,7 +44,7 @@
         WHERE id = #{id}
     </update>
     
-    <select id="search" resultType="org.example.entity.User">
+    <select id="search" resultMap="UserResultMap">
         SELECT * FROM users
         WHERE name LIKE CONCAT('%', #{keyword}, '%')
         OR identity_card LIKE CONCAT('%', #{keyword}, '%')
@@ -40,15 +59,36 @@
         SELECT COUNT(*) FROM users WHERE status = #{status}
     </select>
     
-    <select id="selectAll" resultType="org.example.entity.User">
+    <select id="selectAll" resultMap="UserResultMap">
         SELECT * FROM users
     </select>
     
-    <select id="selectByCondition" resultType="org.example.entity.User">
-        SELECT * FROM users
+    <resultMap id="UserResultMap" type="org.example.entity.User">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="identity_card" property="identityCard"/>
+        <result column="phone_number" property="phoneNumber"/>
+        <result column="balance" property="balance"/>
+        <result column="login_password" property="loginPassword"/>
+        <result column="status" property="status"/>
+        <result column="machine_id" property="machineId"/>
+        <result column="last_on_computer_time" property="lastOnComputerTime"/>
+        <result column="last_off_computer_time" property="lastOffComputerTime"/>
+        <result column="register_time" property="registerTime"/>
+    </resultMap>
+    
+    <select id="selectByCondition" resultMap="UserResultMap">
+        SELECT 
+            id, name, identity_card, phone_number, balance, login_password,
+            status, machine_id, last_on_computer_time, last_off_computer_time, register_time
+        FROM users
         <where>
-            <if test="name != null and name != ''">
-                AND name LIKE CONCAT('%', #{name}, '%')
+            <if test="keyword != null and keyword != ''">
+                AND (
+                    name LIKE CONCAT('%', #{keyword}, '%')
+                    OR identity_card LIKE CONCAT('%', #{keyword}, '%')
+                    OR phone_number LIKE CONCAT('%', #{keyword}, '%')
+                )
             </if>
             <if test="status != null and status != ''">
                 AND status = #{status}
@@ -60,5 +100,13 @@
                 AND balance &lt;= #{maxBalance}
             </if>
         </where>
+        ORDER BY id DESC
+    </select>
+    
+    <select id="selectById" resultMap="UserResultMap">
+        SELECT id, name, identity_card, phone_number, balance, login_password,
+               status, machine_id, last_on_computer_time, last_off_computer_time, register_time
+        FROM users 
+        WHERE id = #{id}
     </select>
 </mapper> 

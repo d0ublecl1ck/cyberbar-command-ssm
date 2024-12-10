@@ -63,4 +63,58 @@
             </if>
         </where>
     </select>
+    
+    <select id="getTotalMachinesCountByZone" resultType="int">
+        SELECT COUNT(*) 
+        FROM machines 
+        WHERE zone_id = #{zoneId}
+    </select>
+    
+    <select id="getCountByStatusAndZone" resultType="int">
+        SELECT COUNT(*) 
+        FROM machines 
+        WHERE status = #{status} 
+        AND zone_id = #{zoneId}
+    </select>
+    
+    <select id="getAveragePrice" resultType="java.math.BigDecimal">
+        SELECT COALESCE(AVG(price), 0) 
+        FROM machines
+    </select>
+    
+    <select id="getMaxPrice" resultType="java.math.BigDecimal">
+        SELECT COALESCE(MAX(price), 0) 
+        FROM machines
+    </select>
+    
+    <select id="getMinPrice" resultType="java.math.BigDecimal">
+        SELECT COALESCE(MIN(price), 0) 
+        FROM machines
+    </select>
+    
+    <!-- 将指定zone_id的机器的zone_id设置为null -->
+    <update id="updateZoneIdToNull">
+        UPDATE machines 
+        SET zone_id = NULL 
+        WHERE zone_id = #{zoneId}
+    </update>
+    
+    <!-- 查询所有没有绑定zone的机器 -->
+    <select id="selectByNullZoneId" resultType="org.example.entity.Machine">
+        SELECT id, zone_id, price, status, online_user_id 
+        FROM machines 
+        <where>
+            zone_id IS NULL
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="minPrice != null">
+                AND price >= #{minPrice}
+            </if>
+            <if test="maxPrice != null">
+                AND price &lt;= #{maxPrice}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
 </mapper> 
