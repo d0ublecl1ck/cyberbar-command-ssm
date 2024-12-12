@@ -86,7 +86,7 @@ public class MachineController {
     @ApiOperation("根据区域ID获取机器列表")
     @GetMapping("/zone/{zoneId}")
     public ResponseEntity<List<Machine>> getMachinesByZoneId(
-            @ApiParam(value = "区��ID", required = true) @PathVariable Integer zoneId) {
+            @ApiParam(value = "区域ID", required = true) @PathVariable Integer zoneId) {
         return ResponseEntity.ok(machineService.getMachinesByZoneId(zoneId));
     }
     
@@ -98,11 +98,23 @@ public class MachineController {
     
     @ApiOperation("更新机器信息")
     @PutMapping("/{id}")
-    public ResponseEntity<Integer> updateMachine(
+    public ResponseEntity<Map<String, Object>> updateMachine(
             @ApiParam(value = "机器ID", required = true) @PathVariable Integer id,
             @RequestBody Machine machine) {
-        machine.setId(id);
-        return ResponseEntity.ok(machineService.updateMachine(machine));
+        Map<String, Object> response = new HashMap<>();
+        try {
+            machine.setId(id);
+            int result = machineService.updateMachine(machine);
+            if (result > 0) {
+                response.put("message", "更新成功");
+                return ResponseEntity.ok(response);
+            }
+            response.put("message", "机器不存在");
+            return ResponseEntity.notFound().build();
+        } catch (RuntimeException e) {
+            response.put("message", e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
     }
     
     @ApiOperation("删除机器")

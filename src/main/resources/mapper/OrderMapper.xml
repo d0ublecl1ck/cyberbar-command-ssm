@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.OrderMapper">
+
+    <insert id="insert" parameterType="org.example.entity.Order">
+        INSERT INTO `order` (commodity_name, commodity_price, quantity, order_date, total_price, machine_id, user_id)
+        VALUES (#{commodityName}, #{commodityPrice}, #{quantity}, #{orderDate}, #{totalPrice}, #{machineId}, #{userId})
+    </insert>
+
+    <select id="selectByCondition" resultType="org.example.entity.Order">
+        SELECT id, commodity_name, commodity_price, quantity, order_date, total_price, status
+        FROM `order`
+        <where>
+            <if test="commodityName != null and commodityName != ''">
+                AND commodity_name LIKE CONCAT('%', #{commodityName}, '%')
+            </if>
+            <if test="startDate != null">
+                AND order_date &gt;= #{startDate}
+            </if>
+            <if test="endDate != null">
+                AND order_date &lt;= #{endDate}
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY order_date DESC
+    </select>
+
+</mapper> 

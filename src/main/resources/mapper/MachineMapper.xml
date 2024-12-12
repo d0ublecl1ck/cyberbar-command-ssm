@@ -26,10 +26,13 @@
     
     <update id="update" parameterType="org.example.entity.Machine">
         UPDATE machines 
-        SET zone_id = #{zoneId},
-            price = #{price},
-            status = #{status},
-            online_user_id = #{onlineUserId}
+        <set>
+            <if test="zoneId != null">zone_id = #{zoneId},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="onlineUserId != null">online_user_id = #{onlineUserId},</if>
+            <if test="onlineUserId == null">online_user_id = null,</if>
+        </set>
         WHERE id = #{id}
     </update>
     

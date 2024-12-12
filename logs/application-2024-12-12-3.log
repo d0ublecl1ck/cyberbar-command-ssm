@@ -1,0 +1,499 @@
+#logback.classic pattern: %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+2024-12-12 11:14:55.266 [main] INFO  o.s.t.c.s.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2024-12-12 11:14:55.282 [main] INFO  o.s.t.c.s.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3541cb24, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2177849e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@40cb8df7, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@13b13b5d, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2892dae4, org.springframework.test.context.transaction.TransactionalTestExecutionListener@355ce81c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@29647f75, org.springframework.test.context.event.EventPublishingTestExecutionListener@3315d2d7]
+2024-12-12 11:14:56.713 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.0.Final
+2024-12-12 11:14:57.085 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2024-12-12 11:14:57.266 [main] INFO  o.s.t.c.t.TransactionContext - Began transaction (1) for test context [DefaultTestContext@2fd64b11 testClass = PackageServiceTest, testInstance = org.example.service.PackageServiceTest@949c598, testMethod = testUpdatePackage@PackageServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43d3aba5 testClass = PackageServiceTest, locations = '{classpath:applicationContext.xml, classpath:spring-mvc.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@3506d826]; rollback [true]
+2024-12-12 11:14:57.291 [main] DEBUG o.e.m.PackageMapper.insertPackage - ==>  Preparing: INSERT INTO package (user_id, discount, start_time, end_time, admin_id) VALUES (?, ?, ?, ?, ?)
+2024-12-12 11:14:57.291 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectByStatus - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE status = ?
+2024-12-12 11:14:57.312 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectByStatus - ==> Parameters: Online(String)
+2024-12-12 11:14:57.314 [main] DEBUG o.e.m.PackageMapper.insertPackage - ==> Parameters: 24944(Integer), 0.85(BigDecimal), 2024-12-12T11:14:57.271578100(LocalDateTime), 2025-01-11T11:14:57.271578100(LocalDateTime), 1(Integer)
+2024-12-12 11:14:57.322 [main] DEBUG o.e.m.PackageMapper.insertPackage - <==    Updates: 1
+2024-12-12 11:14:57.340 [main] DEBUG o.e.m.PackageMapper.updatePackage - ==>  Preparing: UPDATE package SET discount = ? WHERE user_id = ?
+2024-12-12 11:14:57.340 [main] DEBUG o.e.m.PackageMapper.updatePackage - ==> Parameters: 0.75(BigDecimal), 24944(Integer)
+2024-12-12 11:14:57.343 [main] DEBUG o.e.m.PackageMapper.updatePackage - <==    Updates: 1
+2024-12-12 11:14:57.345 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectByStatus - <==      Total: 50
+2024-12-12 11:14:57.347 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.348 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 900(String)
+2024-12-12 11:14:57.351 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.353 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.353 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 900(Integer)
+2024-12-12 11:14:57.355 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.355 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.355 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 561(String)
+2024-12-12 11:14:57.358 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.359 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.359 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 561(Integer)
+2024-12-12 11:14:57.359 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.360 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.360 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 58(String)
+2024-12-12 11:14:57.363 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.363 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.363 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 58(Integer)
+2024-12-12 11:14:57.366 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.368 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE id = ?
+2024-12-12 11:14:57.368 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==> Parameters: 12(Integer)
+2024-12-12 11:14:57.370 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.370 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.371 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 58(String)
+2024-12-12 11:14:57.373 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.373 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.373 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 58(Integer)
+2024-12-12 11:14:57.374 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.376 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.376 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, USER_OPERATION_ERROR(String), 下机失败，余额不足，用户ID: 12, 用户名: User643, 当前余额: 0.00元, 需付费用: 1264865.40元(String)
+2024-12-12 11:14:57.379 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.381 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==>  Preparing: INSERT INTO userlog (user_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.381 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==> Parameters: 12(Integer), ERROR(String), 强制下机失败：余额不足(String)
+2024-12-12 11:14:57.384 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.384 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.384 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 359(String)
+2024-12-12 11:14:57.386 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.386 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.388 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 359(Integer)
+2024-12-12 11:14:57.389 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.389 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.390 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 305(String)
+2024-12-12 11:14:57.392 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.392 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.392 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 305(Integer)
+2024-12-12 11:14:57.393 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.393 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.393 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 384(String)
+2024-12-12 11:14:57.396 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.396 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.396 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 384(Integer)
+2024-12-12 11:14:57.397 [main] DEBUG o.e.m.P.selectPackage_COUNT - ==>  Preparing: SELECT count(0) FROM package WHERE user_id = ?
+2024-12-12 11:14:57.397 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.397 [main] DEBUG o.e.m.P.selectPackage_COUNT - ==> Parameters: 24944(Integer)
+2024-12-12 11:14:57.397 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.398 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 677(String)
+2024-12-12 11:14:57.399 [main] DEBUG o.e.m.P.selectPackage_COUNT - <==      Total: 1
+2024-12-12 11:14:57.400 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.400 [main] DEBUG o.e.m.PackageMapper.selectPackage - ==>  Preparing: SELECT * FROM package WHERE user_id = ? LIMIT ?
+2024-12-12 11:14:57.400 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.400 [main] DEBUG o.e.m.PackageMapper.selectPackage - ==> Parameters: 24944(Integer), 10(Integer)
+2024-12-12 11:14:57.400 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 677(Integer)
+2024-12-12 11:14:57.401 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.401 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.401 [main] DEBUG o.e.m.PackageMapper.selectPackage - <==      Total: 1
+2024-12-12 11:14:57.401 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 39(String)
+2024-12-12 11:14:57.404 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.404 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.404 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 39(Integer)
+2024-12-12 11:14:57.405 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.407 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE id = ?
+2024-12-12 11:14:57.407 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==> Parameters: 25(Integer)
+2024-12-12 11:14:57.407 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.408 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.408 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 39(String)
+2024-12-12 11:14:57.410 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.410 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.410 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 39(Integer)
+2024-12-12 11:14:57.411 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.411 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.412 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, USER_OPERATION_ERROR(String), 下机失败，余额不足，用户ID: 25, 用户名: User23, 当前余额: 0.00元, 需付费用: 1256606.00元(String)
+2024-12-12 11:14:57.413 [main] INFO  o.s.t.c.t.TransactionContext - Rolled back transaction for test: [DefaultTestContext@2fd64b11 testClass = PackageServiceTest, testInstance = org.example.service.PackageServiceTest@949c598, testMethod = testUpdatePackage@PackageServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43d3aba5 testClass = PackageServiceTest, locations = '{classpath:applicationContext.xml, classpath:spring-mvc.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2024-12-12 11:14:57.415 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.415 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==>  Preparing: INSERT INTO userlog (user_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.415 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==> Parameters: 25(Integer), ERROR(String), 强制下机失败：余额不足(String)
+2024-12-12 11:14:57.417 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.418 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.418 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 372(String)
+2024-12-12 11:14:57.419 [main] INFO  o.s.t.c.t.TransactionContext - Began transaction (1) for test context [DefaultTestContext@2fd64b11 testClass = PackageServiceTest, testInstance = org.example.service.PackageServiceTest@6af90849, testMethod = testAddPackage@PackageServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43d3aba5 testClass = PackageServiceTest, locations = '{classpath:applicationContext.xml, classpath:spring-mvc.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@3506d826]; rollback [true]
+2024-12-12 11:14:57.421 [main] DEBUG o.e.m.PackageMapper.insertPackage - ==>  Preparing: INSERT INTO package (user_id, discount, start_time, end_time, admin_id) VALUES (?, ?, ?, ?, ?)
+2024-12-12 11:14:57.421 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.421 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.421 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 372(Integer)
+2024-12-12 11:14:57.421 [main] DEBUG o.e.m.PackageMapper.insertPackage - ==> Parameters: 83849(Integer), 0.85(BigDecimal), 2024-12-12T11:14:57.421138900(LocalDateTime), 2025-01-11T11:14:57.421138900(LocalDateTime), 1(Integer)
+2024-12-12 11:14:57.422 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.422 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.422 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 636(String)
+2024-12-12 11:14:57.424 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.424 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.424 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 636(Integer)
+2024-12-12 11:14:57.425 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.425 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.425 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 723(String)
+2024-12-12 11:14:57.427 [main] DEBUG o.e.m.PackageMapper.insertPackage - <==    Updates: 1
+2024-12-12 11:14:57.428 [main] INFO  o.s.t.c.t.TransactionContext - Rolled back transaction for test: [DefaultTestContext@2fd64b11 testClass = PackageServiceTest, testInstance = org.example.service.PackageServiceTest@6af90849, testMethod = testAddPackage@PackageServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43d3aba5 testClass = PackageServiceTest, locations = '{classpath:applicationContext.xml, classpath:spring-mvc.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2024-12-12 11:14:57.428 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.428 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.428 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 723(Integer)
+2024-12-12 11:14:57.429 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.429 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.429 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 187(String)
+2024-12-12 11:14:57.432 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.432 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.432 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 187(Integer)
+2024-12-12 11:14:57.436 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.436 [main] INFO  o.s.t.c.t.TransactionContext - Began transaction (1) for test context [DefaultTestContext@2fd64b11 testClass = PackageServiceTest, testInstance = org.example.service.PackageServiceTest@60e3c26e, testMethod = testDeletePackage@PackageServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43d3aba5 testClass = PackageServiceTest, locations = '{classpath:applicationContext.xml, classpath:spring-mvc.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@3506d826]; rollback [true]
+2024-12-12 11:14:57.437 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.437 [main] DEBUG o.e.m.PackageMapper.insertPackage - ==>  Preparing: INSERT INTO package (user_id, discount, start_time, end_time, admin_id) VALUES (?, ?, ?, ?, ?)
+2024-12-12 11:14:57.437 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 968(String)
+2024-12-12 11:14:57.437 [main] DEBUG o.e.m.PackageMapper.insertPackage - ==> Parameters: 82998(Integer), 0.85(BigDecimal), 2024-12-12T11:14:57.437744900(LocalDateTime), 2025-01-11T11:14:57.437744900(LocalDateTime), 1(Integer)
+2024-12-12 11:14:57.440 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.440 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.440 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 968(Integer)
+2024-12-12 11:14:57.441 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.441 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.441 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 750(String)
+2024-12-12 11:14:57.444 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.445 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.445 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 750(Integer)
+2024-12-12 11:14:57.445 [main] DEBUG o.e.m.PackageMapper.insertPackage - <==    Updates: 1
+2024-12-12 11:14:57.445 [main] DEBUG o.e.m.PackageMapper.deletePackage - ==>  Preparing: DELETE FROM package WHERE user_id = ?
+2024-12-12 11:14:57.446 [main] DEBUG o.e.m.PackageMapper.deletePackage - ==> Parameters: 82998(Integer)
+2024-12-12 11:14:57.446 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.446 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.446 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 362(String)
+2024-12-12 11:14:57.448 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.448 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.448 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 362(Integer)
+2024-12-12 11:14:57.450 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.450 [main] DEBUG o.e.m.PackageMapper.deletePackage - <==    Updates: 1
+2024-12-12 11:14:57.450 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.450 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 930(String)
+2024-12-12 11:14:57.451 [main] INFO  o.s.t.c.t.TransactionContext - Rolled back transaction for test: [DefaultTestContext@2fd64b11 testClass = PackageServiceTest, testInstance = org.example.service.PackageServiceTest@60e3c26e, testMethod = testDeletePackage@PackageServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43d3aba5 testClass = PackageServiceTest, locations = '{classpath:applicationContext.xml, classpath:spring-mvc.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2024-12-12 11:14:57.452 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.453 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.453 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 930(Integer)
+2024-12-12 11:14:57.453 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.454 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.454 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 72(String)
+2024-12-12 11:14:57.455 [main] INFO  o.s.t.c.t.TransactionContext - Began transaction (1) for test context [DefaultTestContext@2fd64b11 testClass = PackageServiceTest, testInstance = org.example.service.PackageServiceTest@f9cab00, testMethod = testQueryPackage@PackageServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43d3aba5 testClass = PackageServiceTest, locations = '{classpath:applicationContext.xml, classpath:spring-mvc.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@3506d826]; rollback [true]
+2024-12-12 11:14:57.455 [main] DEBUG o.e.m.PackageMapper.insertPackage - ==>  Preparing: INSERT INTO package (user_id, discount, start_time, end_time, admin_id) VALUES (?, ?, ?, ?, ?)
+2024-12-12 11:14:57.457 [main] DEBUG o.e.m.PackageMapper.insertPackage - ==> Parameters: 18423(Integer), 0.85(BigDecimal), 2024-12-12T11:14:57.455883100(LocalDateTime), 2025-01-11T11:14:57.455883100(LocalDateTime), 1(Integer)
+2024-12-12 11:14:57.457 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.457 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.457 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 72(Integer)
+2024-12-12 11:14:57.458 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.458 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE id = ?
+2024-12-12 11:14:57.458 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==> Parameters: 49(Integer)
+2024-12-12 11:14:57.459 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.460 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.460 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 72(String)
+2024-12-12 11:14:57.460 [main] DEBUG o.e.m.PackageMapper.insertPackage - <==    Updates: 1
+2024-12-12 11:14:57.461 [main] DEBUG o.e.m.P.selectPackage_COUNT - ==>  Preparing: SELECT count(0) FROM package WHERE user_id = ?
+2024-12-12 11:14:57.462 [main] DEBUG o.e.m.P.selectPackage_COUNT - ==> Parameters: 18423(Integer)
+2024-12-12 11:14:57.462 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.462 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.462 [main] DEBUG o.e.m.P.selectPackage_COUNT - <==      Total: 1
+2024-12-12 11:14:57.462 [main] DEBUG o.e.m.PackageMapper.selectPackage - ==>  Preparing: SELECT * FROM package WHERE user_id = ? LIMIT ?
+2024-12-12 11:14:57.462 [main] DEBUG o.e.m.PackageMapper.selectPackage - ==> Parameters: 18423(Integer), 10(Integer)
+2024-12-12 11:14:57.464 [main] DEBUG o.e.m.PackageMapper.selectPackage - <==      Total: 1
+2024-12-12 11:14:57.464 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 72(Integer)
+2024-12-12 11:14:57.464 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.465 [main] DEBUG o.e.m.P.selectPackage_COUNT - ==>  Preparing: SELECT count(0) FROM package WHERE discount = ?
+2024-12-12 11:14:57.465 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.465 [main] DEBUG o.e.m.P.selectPackage_COUNT - ==> Parameters: 0.85(BigDecimal)
+2024-12-12 11:14:57.465 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, USER_OPERATION_ERROR(String), 下机失败，余额不足，用户ID: 49, 用户名: User706, 当前余额: 0.00元, 需付费用: 353345.40元(String)
+2024-12-12 11:14:57.466 [main] DEBUG o.e.m.P.selectPackage_COUNT - <==      Total: 1
+2024-12-12 11:14:57.468 [main] DEBUG o.e.m.PackageMapper.selectPackage - ==>  Preparing: SELECT * FROM package WHERE discount = ? LIMIT ?
+2024-12-12 11:14:57.468 [main] DEBUG o.e.m.PackageMapper.selectPackage - ==> Parameters: 0.85(BigDecimal), 10(Integer)
+2024-12-12 11:14:57.468 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.468 [main] DEBUG o.e.m.PackageMapper.selectPackage - <==      Total: 2
+2024-12-12 11:14:57.468 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==>  Preparing: INSERT INTO userlog (user_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.469 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==> Parameters: 49(Integer), ERROR(String), 强制下机失败：余额不足(String)
+2024-12-12 11:14:57.469 [main] DEBUG o.e.m.P.selectPackage_COUNT - ==>  Preparing: SELECT count(0) FROM package
+2024-12-12 11:14:57.469 [main] DEBUG o.e.m.P.selectPackage_COUNT - ==> Parameters: 
+2024-12-12 11:14:57.470 [main] DEBUG o.e.m.P.selectPackage_COUNT - <==      Total: 1
+2024-12-12 11:14:57.470 [main] DEBUG o.e.m.PackageMapper.selectPackage - ==>  Preparing: SELECT * FROM package LIMIT ?
+2024-12-12 11:14:57.470 [main] DEBUG o.e.m.PackageMapper.selectPackage - ==> Parameters: 5(Integer)
+2024-12-12 11:14:57.470 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.471 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.471 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 519(String)
+2024-12-12 11:14:57.471 [main] DEBUG o.e.m.PackageMapper.selectPackage - <==      Total: 4
+2024-12-12 11:14:57.472 [main] INFO  o.s.t.c.t.TransactionContext - Rolled back transaction for test: [DefaultTestContext@2fd64b11 testClass = PackageServiceTest, testInstance = org.example.service.PackageServiceTest@f9cab00, testMethod = testQueryPackage@PackageServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43d3aba5 testClass = PackageServiceTest, locations = '{classpath:applicationContext.xml, classpath:spring-mvc.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2024-12-12 11:14:57.473 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.473 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.473 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 519(Integer)
+2024-12-12 11:14:57.475 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.475 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.475 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 170(String)
+2024-12-12 11:14:57.477 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.478 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.478 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 170(Integer)
+2024-12-12 11:14:57.479 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.479 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.479 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 473(String)
+2024-12-12 11:14:57.482 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.482 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.483 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 473(Integer)
+2024-12-12 11:14:57.483 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.483 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.484 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 596(String)
+2024-12-12 11:14:57.486 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.486 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.486 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 596(Integer)
+2024-12-12 11:14:57.487 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.487 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.487 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 295(String)
+2024-12-12 11:14:57.490 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.491 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.491 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 295(Integer)
+2024-12-12 11:14:57.492 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.492 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.492 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 714(String)
+2024-12-12 11:14:57.494 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.495 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.495 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 714(Integer)
+2024-12-12 11:14:57.495 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.496 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.496 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 535(String)
+2024-12-12 11:14:57.499 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.499 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.500 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 535(Integer)
+2024-12-12 11:14:57.500 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.500 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.500 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 827(String)
+2024-12-12 11:14:57.502 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.503 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.503 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 827(Integer)
+2024-12-12 11:14:57.504 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.504 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.504 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 3(String)
+2024-12-12 11:14:57.507 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.507 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.507 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 3(Integer)
+2024-12-12 11:14:57.510 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.511 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE id = ?
+2024-12-12 11:14:57.511 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==> Parameters: 79(Integer)
+2024-12-12 11:14:57.512 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.512 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.513 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 3(String)
+2024-12-12 11:14:57.516 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.516 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.517 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 3(Integer)
+2024-12-12 11:14:57.518 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.518 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.518 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, USER_OPERATION_ERROR(String), 下机失败，余额不足，用户ID: 79, 用户名: User147, 当前余额: 0.00元, 需付费用: 47006.00元(String)
+2024-12-12 11:14:57.521 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.522 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==>  Preparing: INSERT INTO userlog (user_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.522 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==> Parameters: 79(Integer), ERROR(String), 强制下机失败：余额不足(String)
+2024-12-12 11:14:57.524 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.524 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.524 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 288(String)
+2024-12-12 11:14:57.527 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.527 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.527 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 288(Integer)
+2024-12-12 11:14:57.528 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.529 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.529 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 220(String)
+2024-12-12 11:14:57.532 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.532 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.532 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 220(Integer)
+2024-12-12 11:14:57.533 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.533 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.533 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 598(String)
+2024-12-12 11:14:57.536 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.536 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.537 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 598(Integer)
+2024-12-12 11:14:57.537 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.538 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.538 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 3(String)
+2024-12-12 11:14:57.540 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.540 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.540 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 3(Integer)
+2024-12-12 11:14:57.541 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.541 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE id = ?
+2024-12-12 11:14:57.542 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==> Parameters: 99(Integer)
+2024-12-12 11:14:57.542 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.542 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.543 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 3(String)
+2024-12-12 11:14:57.546 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.546 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.546 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 3(Integer)
+2024-12-12 11:14:57.547 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.547 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.547 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, USER_OPERATION_ERROR(String), 下机失败，余额不足，用户ID: 99, 用户名: User27, 当前余额: 0.00元, 需付费用: 1357406.00元(String)
+2024-12-12 11:14:57.550 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.550 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==>  Preparing: INSERT INTO userlog (user_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.550 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==> Parameters: 99(Integer), ERROR(String), 强制下机失败：余额不足(String)
+2024-12-12 11:14:57.552 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.552 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.552 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 897(String)
+2024-12-12 11:14:57.554 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.554 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.554 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 897(Integer)
+2024-12-12 11:14:57.554 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.555 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.555 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 104(String)
+2024-12-12 11:14:57.557 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.557 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.557 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 104(Integer)
+2024-12-12 11:14:57.558 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.558 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.558 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 303(String)
+2024-12-12 11:14:57.561 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.562 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.562 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 303(Integer)
+2024-12-12 11:14:57.562 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.563 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.563 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 691(String)
+2024-12-12 11:14:57.565 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.565 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.565 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 691(Integer)
+2024-12-12 11:14:57.565 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.566 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.566 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 998(String)
+2024-12-12 11:14:57.567 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.568 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.568 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 998(Integer)
+2024-12-12 11:14:57.568 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.568 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.569 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 118(String)
+2024-12-12 11:14:57.571 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.572 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.572 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 118(Integer)
+2024-12-12 11:14:57.572 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.573 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.573 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 944(String)
+2024-12-12 11:14:57.576 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.576 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.576 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 944(Integer)
+2024-12-12 11:14:57.577 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.577 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.577 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 11(String)
+2024-12-12 11:14:57.579 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.579 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.579 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 11(Integer)
+2024-12-12 11:14:57.580 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.580 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE id = ?
+2024-12-12 11:14:57.580 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==> Parameters: 122(Integer)
+2024-12-12 11:14:57.581 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.581 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.581 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 11(String)
+2024-12-12 11:14:57.583 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.583 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.583 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 11(Integer)
+2024-12-12 11:14:57.584 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.584 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.584 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, USER_OPERATION_ERROR(String), 下机失败，余额不足，用户ID: 122, 用户名: User937, 当前余额: 0.00元, 需付费用: 611933.30元(String)
+2024-12-12 11:14:57.586 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.586 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==>  Preparing: INSERT INTO userlog (user_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.586 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==> Parameters: 122(Integer), ERROR(String), 强制下机失败：余额不足(String)
+2024-12-12 11:14:57.589 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.589 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.589 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 882(String)
+2024-12-12 11:14:57.590 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.591 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.591 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 882(Integer)
+2024-12-12 11:14:57.591 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.591 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.592 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 593(String)
+2024-12-12 11:14:57.594 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.594 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.594 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 593(Integer)
+2024-12-12 11:14:57.594 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.595 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.595 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 444(String)
+2024-12-12 11:14:57.598 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.598 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.598 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 444(Integer)
+2024-12-12 11:14:57.599 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.599 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.599 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 263(String)
+2024-12-12 11:14:57.601 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.601 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.601 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 263(Integer)
+2024-12-12 11:14:57.603 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.603 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.603 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 731(String)
+2024-12-12 11:14:57.604 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.606 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.606 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 731(Integer)
+2024-12-12 11:14:57.606 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.607 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.607 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 570(String)
+2024-12-12 11:14:57.609 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.609 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.610 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 570(Integer)
+2024-12-12 11:14:57.610 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.610 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.611 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 267(String)
+2024-12-12 11:14:57.613 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.613 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.613 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 267(Integer)
+2024-12-12 11:14:57.613 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.613 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.614 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 491(String)
+2024-12-12 11:14:57.616 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.616 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.616 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 491(Integer)
+2024-12-12 11:14:57.617 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.617 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.617 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 449(String)
+2024-12-12 11:14:57.620 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.620 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.620 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 449(Integer)
+2024-12-12 11:14:57.620 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.621 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.621 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 79(String)
+2024-12-12 11:14:57.622 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.623 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.623 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 79(Integer)
+2024-12-12 11:14:57.623 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.624 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE id = ?
+2024-12-12 11:14:57.624 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==> Parameters: 148(Integer)
+2024-12-12 11:14:57.624 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.625 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.625 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 79(String)
+2024-12-12 11:14:57.627 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.627 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.627 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 79(Integer)
+2024-12-12 11:14:57.628 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.628 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.628 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, USER_OPERATION_ERROR(String), 下机失败，余额不足，用户ID: 148, 用户名: User696, 当前余额: 0.00元, 需付费用: 625124.80元(String)
+2024-12-12 11:14:57.630 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.630 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==>  Preparing: INSERT INTO userlog (user_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.630 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==> Parameters: 148(Integer), ERROR(String), 强制下机失败：余额不足(String)
+2024-12-12 11:14:57.632 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.633 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.633 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 68(String)
+2024-12-12 11:14:57.635 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.635 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.635 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 68(Integer)
+2024-12-12 11:14:57.637 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.637 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==>  Preparing: SELECT id, name, identity_card, phone_number, balance, login_password, status, machine_id, last_on_computer_time, last_off_computer_time, register_time FROM users WHERE id = ?
+2024-12-12 11:14:57.637 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - ==> Parameters: 150(Integer)
+2024-12-12 11:14:57.638 [pool-1-thread-1] DEBUG o.e.mapper.UserMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.638 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.638 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 68(String)
+2024-12-12 11:14:57.640 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.640 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.640 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 68(Integer)
+2024-12-12 11:14:57.641 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 1
+2024-12-12 11:14:57.641 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.641 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, USER_OPERATION_ERROR(String), 下机失败，余额不足，用户ID: 150, 用户名: User612, 当前余额: 0.00元, 需付费用: 345673.90元(String)
+2024-12-12 11:14:57.643 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.643 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==>  Preparing: INSERT INTO userlog (user_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.644 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - ==> Parameters: 150(Integer), ERROR(String), 强制下机失败：余额不足(String)
+2024-12-12 11:14:57.646 [pool-1-thread-1] DEBUG o.e.mapper.UserLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.646 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==>  Preparing: INSERT INTO managementlog (admin_id, operation, detail) VALUES (?, ?, ?)
+2024-12-12 11:14:57.646 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - ==> Parameters: null, QUERY_MACHINE(String), 查询机器详情，机器ID: 413(String)
+2024-12-12 11:14:57.648 [pool-1-thread-1] DEBUG o.e.m.ManagementLogMapper.insert - <==    Updates: 1
+2024-12-12 11:14:57.648 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==>  Preparing: SELECT id, zone_id, price, status, online_user_id FROM machines WHERE id = ?
+2024-12-12 11:14:57.648 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - ==> Parameters: 413(Integer)
+2024-12-12 11:14:57.648 [pool-1-thread-1] DEBUG o.e.mapper.MachineMapper.selectById - <==      Total: 0
+2024-12-12 11:14:57.652 [pool-1-thread-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task
+org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processRollback(AbstractPlatformTransactionManager.java:870)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:707)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at org.example.service.impl.UserMonitorServiceImpl$$EnhancerBySpringCGLIB$$8a28e7a4.checkUserBalance(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:577)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1589)

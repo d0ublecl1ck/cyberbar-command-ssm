@@ -14,4 +14,10 @@ public interface UserMapper {
     int countTotal();
     int countByStatus(@Param("status") String status);
     List<User> selectByCondition(UserQueryDTO queryDTO);
+    User loginByIdentityCard(@Param("identityCard") String identityCard, @Param("password") String password);
+    User loginByPhoneNumber(@Param("phoneNumber") String phoneNumber, @Param("password") String password);
+    /**
+     * 根据状态查询用户
+     */
+    List<User> selectByStatus(@Param("status") String status);
 } 

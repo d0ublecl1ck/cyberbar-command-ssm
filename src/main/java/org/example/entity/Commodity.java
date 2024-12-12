@@ -14,6 +14,8 @@ public class Commodity {
     private BigDecimal price;
     /** 计量单位 */
     private String unit;
+    /** 库存数量 */
+    private Integer stock;
     
     // Getters and Setters
     public Integer getId() {
@@ -46,5 +48,13 @@ public class Commodity {
     
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+    
+    public Integer getStock() {
+        return stock;
+    }
+    
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 } 

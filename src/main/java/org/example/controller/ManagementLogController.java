@@ -14,7 +14,7 @@ import com.github.pagehelper.PageInfo;
 
 import java.time.LocalDateTime;
 
-@Api(tags = "管理日志接口")
+@Api(tags = "管理日志查询接口")
 @RestController
 @RequestMapping("/api/managementlogs")
 public class ManagementLogController {
@@ -22,32 +22,11 @@ public class ManagementLogController {
     @Autowired
     private ManagementLogService managementLogService;
     
-    @ApiOperation("创建管理日志")
-    @PostMapping
-    public ResponseEntity<Integer> createManagementLog(@RequestBody ManagementLog managementLog) {
-        return ResponseEntity.ok(managementLogService.createManagementLog(managementLog));
-    }
-    
-    @ApiOperation("删除管理日志")
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Integer> deleteManagementLog(
-            @ApiParam(value = "日志ID", required = true) @PathVariable Integer id) {
-        return ResponseEntity.ok(managementLogService.deleteManagementLog(id));
-    }
-    
-    @ApiOperation("更新管理日志")
-    @PutMapping("/{id}")
-    public ResponseEntity<Integer> updateManagementLog(
-            @ApiParam(value = "日志ID", required = true) @PathVariable Integer id,
-            @RequestBody ManagementLog managementLog) {
-        managementLog.setId(id);
-        return ResponseEntity.ok(managementLogService.updateManagementLog(managementLog));
-    }
-    
     @ApiOperation("条件查询管理日志")
     @GetMapping
     public ResponseEntity<PageInfo<ManagementLog>> getManagementLogs(
             @ApiParam("管理员ID") @RequestParam(required = false) Integer adminId,
+            @ApiParam("操作类型") @RequestParam(required = false) String operation,
             @ApiParam("开始时间") @RequestParam(required = false) 
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime startTime,
             @ApiParam("结束时间") @RequestParam(required = false) 
@@ -57,6 +36,7 @@ public class ManagementLogController {
         
         ManagementLogQueryDTO queryDTO = new ManagementLogQueryDTO();
         queryDTO.setAdminId(adminId);
+        queryDTO.setOperation(operation);
         queryDTO.setStartTime(startTime);
         queryDTO.setEndTime(endTime);
         queryDTO.setPageNum(pageNum);

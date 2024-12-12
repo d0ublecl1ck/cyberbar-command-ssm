@@ -3,32 +3,33 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.mapper.CommodityMapper">
     <select id="selectAll" resultType="org.example.entity.Commodity">
-        SELECT id, name, price, unit 
+        SELECT id, name, price, unit, stock 
         FROM commodity
     </select>
     
     <select id="selectById" parameterType="java.lang.Integer" resultType="org.example.entity.Commodity">
-        SELECT id, name, price, unit 
+        SELECT id, name, price, unit, stock 
         FROM commodity 
         WHERE id = #{id}
     </select>
     
     <select id="selectByName" parameterType="java.lang.String" resultType="org.example.entity.Commodity">
-        SELECT id, name, price, unit 
+        SELECT id, name, price, unit, stock 
         FROM commodity 
         WHERE name = #{name}
     </select>
     
     <insert id="insert" parameterType="org.example.entity.Commodity">
-        INSERT INTO commodity (name, price, unit)
-        VALUES (#{name}, #{price}, #{unit})
+        INSERT INTO commodity (name, price, unit, stock)
+        VALUES (#{name}, #{price}, #{unit}, #{stock})
     </insert>
     
     <update id="update" parameterType="org.example.entity.Commodity">
         UPDATE commodity 
         SET name = #{name},
             price = #{price},
-            unit = #{unit}
+            unit = #{unit},
+            stock = #{stock}
         WHERE id = #{id}
     </update>
     
@@ -37,7 +38,7 @@
     </delete>
     
     <select id="selectByCondition" resultType="org.example.entity.Commodity">
-        SELECT id, name, price, unit 
+        SELECT id, name, price, unit, stock 
         FROM commodity
         <where>
             <if test="name != null and name != ''">

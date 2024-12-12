@@ -46,6 +46,10 @@ public class User {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime registerTime;
     
+    /** 余额预警阈值 */
+    @DecimalMin("0.00")
+    private BigDecimal balanceWarningThreshold = new BigDecimal("10.00");
+    
     public enum UserStatus {
         Offline, Online, Banned
     }

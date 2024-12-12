@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.mapper.PackageMapper">
+
+    <insert id="insertPackage" parameterType="org.example.entity.Package">
+        INSERT INTO package (user_id, discount, start_time, end_time, admin_id)
+        VALUES (#{userId}, #{discount}, #{startTime}, #{endTime}, #{adminId})
+    </insert>
+
+    <delete id="deletePackage" parameterType="int">
+        DELETE FROM package WHERE user_id = #{userId}
+    </delete>
+
+    <update id="updatePackage" parameterType="org.example.entity.Package">
+        UPDATE package
+        <set>
+            <if test="discount != null">discount = #{discount},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="adminId != null">admin_id = #{adminId}</if>
+        </set>
+        WHERE user_id = #{userId}
+    </update>
+
+    <select id="selectPackage" parameterType="org.example.dto.PackageQueryDTO" resultType="org.example.entity.Package">
+        SELECT * FROM package
+        <where>
+            <if test="userId != null">AND user_id = #{userId}</if>
+            <if test="discount != null">AND discount = #{discount}</if>
+            <if test="startTime != null">AND start_time = #{startTime}</if>
+            <if test="endTime != null">AND end_time = #{endTime}</if>
+            <if test="adminId != null">AND admin_id = #{adminId}</if>
+        </where>
+    </select>
+
+</mapper> 

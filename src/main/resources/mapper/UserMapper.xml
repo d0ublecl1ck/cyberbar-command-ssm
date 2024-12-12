@@ -34,12 +34,14 @@
         UPDATE users
         <set>
             <if test="name != null">name = #{name},</if>
-            <if test="identityCard != null">identity_card = #{identityCard},</if>
             <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
-            <if test="balance != null">balance = #{balance},</if>
+            <if test="identityCard != null">identity_card = #{identityCard},</if>
             <if test="loginPassword != null">login_password = #{loginPassword},</if>
+            <if test="balance != null">balance = #{balance},</if>
             <if test="status != null">status = #{status},</if>
             <if test="machineId != null">machine_id = #{machineId},</if>
+            <if test="lastOnComputerTime != null">last_on_computer_time = #{lastOnComputerTime},</if>
+            <if test="lastOffComputerTime != null">last_off_computer_time = #{lastOffComputerTime}</if>
         </set>
         WHERE id = #{id}
     </update>
@@ -108,5 +110,28 @@
                status, machine_id, last_on_computer_time, last_off_computer_time, register_time
         FROM users 
         WHERE id = #{id}
+    </select>
+    
+    <!-- 通过身份证号登录 -->
+    <select id="loginByIdentityCard" resultType="org.example.entity.User">
+        SELECT * FROM users 
+        WHERE identity_card = #{identityCard} 
+        AND login_password = #{password}
+        AND status != 'Banned'
+    </select>
+    
+    <!-- 通过手机号登录 -->
+    <select id="loginByPhoneNumber" resultType="org.example.entity.User">
+        SELECT * FROM users 
+        WHERE phone_number = #{phoneNumber} 
+        AND login_password = #{password}
+        AND status != 'Banned'
+    </select>
+    
+    <select id="selectByStatus" resultMap="UserResultMap">
+        SELECT id, name, identity_card, phone_number, balance, login_password,
+               status, machine_id, last_on_computer_time, last_off_computer_time, register_time
+        FROM users 
+        WHERE status = #{status}
     </select>
 </mapper> 

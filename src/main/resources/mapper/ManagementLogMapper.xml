@@ -28,6 +28,9 @@
             <if test="adminId != null">
                 AND admin_id = #{adminId}
             </if>
+            <if test="operation != null and operation != ''">
+                AND operation = #{operation}
+            </if>
             <if test="startTime != null">
                 AND operation_time >= #{startTime}
             </if>
