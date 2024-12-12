@@ -93,4 +93,10 @@
         <param-name>spring.profiles.active</param-name>
         <param-value>dev</param-value>
     </context-param>
+
+    <!-- 添加绝对顺序配置 -->
+    <absolute-ordering>
+        <name>spring_web</name>
+        <others/>
+    </absolute-ordering>
 </web-app>
