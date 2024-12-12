@@ -1,7 +1,7 @@
 # CyberBarCommand
 
 ## 项目简介
-CyberBarCommand 是一个基于 Spring MVC + MyBatis 的现代化网吧管理系统后端服务。系统提供完整的网吧运营管理功能，包括区域管理、机器管理、用户管理、管理员管理等核心功能，采用 RESTful API 设计规范。
+CyberBarCommand 是一个基于 Spring MVC + MyBatis 的现代化网吧管理系统后端服务。系统提供完整的网吧运营管理功能，包括区域管理、机器管理、用户管理、管理员管理、订单管理等核心功能，采用 RESTful API 设计规范。
 
 ## 技术栈
 - Spring MVC 5.3.20
@@ -18,6 +18,7 @@ CyberBarCommand 是一个基于 Spring MVC + MyBatis 的现代化网吧管理系
 - 机器管理（电脑设备管理）
 - 用户管理（会员管理）
 - 管理员系统
+- 订单管理（商品订单）
 - RESTful API 接口
 - 统一的日期时间处理
 - 分页查询支持
@@ -74,6 +75,19 @@ src/
 - 过期时间: 默认24小时，可通过jwt.expiration配置
 - Token格式: Bearer <token>
 - 排除路径: 登录接口和Swagger文档不需要认证
+
+### 订单管理
+系统支持完整的订单管理功能：
+- 创建订单：支持多商品订单创建
+- 订单状态：Pending（待处理）、Completed（已完成）、Cancelled（已取消）
+- 订单查询：支持多条件组合查询
+  - 按商品名称
+  - 按日期范围
+  - 按订单状态
+  - 按用户ID
+  - 按机器ID
+- 分页支持：默认每页10条记录
+- 商品信息：包含商品ID、名称、数量、单价等
 
 ## 开发指南
 
