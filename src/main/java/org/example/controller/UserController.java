@@ -21,6 +21,7 @@ import java.math.BigDecimal;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import java.util.UUID;
+import org.example.util.JwtUtil;
 
 @Api(tags = "用户管理接口")
 @RestController
@@ -32,6 +33,9 @@ public class UserController {
     
     @Autowired
     private UserLogService userLogService;
+    
+    @Autowired
+    private JwtUtil jwtUtil;
     
     @ApiOperation("创建新用户")
     @PostMapping
@@ -130,11 +134,11 @@ public class UserController {
         
         if (user != null) {
             try {
-                // 登录成功后直接上机
+                // 登录成功后��接上机
                 userService.startUsingComputer(user.getId(), loginDTO.getMachineId());
                 
                 // 生成token（这里使用简单的UUID，实际项目中应该使用JWT）
-                String token = UUID.randomUUID().toString();
+                String token = jwtUtil.generateToken(user, "USER");
                 
                 // 记录登录日志
                 UserLog userLog = new UserLog();

@@ -16,6 +16,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.example.util.JwtUtil;
+
 @Api(tags = "管理员接口")
 @RestController
 @RequestMapping(value = "/api/admin", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -24,6 +26,9 @@ public class AdminController {
     
     @Autowired
     private AdminService adminService;
+    
+    @Autowired
+    private JwtUtil jwtUtil;
     
     @ApiOperation("管理员登录")
     @PostMapping(value = "/login", produces = "application/json;charset=UTF-8")
@@ -48,7 +53,7 @@ public class AdminController {
         
         Admin admin = adminService.login(username, password);
         if (admin != null) {
-            String token = UUID.randomUUID().toString();
+            String token = jwtUtil.generateAdminToken(admin.getUsername(), admin.getId());
             log.info("【登录成功】用户名: {}", username);
             return ResponseEntity.ok(LoginResponse.success(token, admin));
         }

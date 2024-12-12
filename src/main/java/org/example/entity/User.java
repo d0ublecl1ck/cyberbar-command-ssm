@@ -50,6 +50,8 @@ public class User {
     @DecimalMin("0.00")
     private BigDecimal balanceWarningThreshold = new BigDecimal("10.00");
     
+    private String username;
+    
     public enum UserStatus {
         Offline, Online, Banned
     }

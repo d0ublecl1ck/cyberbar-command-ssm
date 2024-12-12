@@ -9,6 +9,8 @@ public class OrderQueryDTO {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String status;
+    private Integer userId;
+    private Integer machineId;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
 } 
