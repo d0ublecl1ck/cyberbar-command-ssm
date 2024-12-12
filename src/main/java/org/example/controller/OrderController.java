@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.stream.Collectors;
+import java.util.Arrays;
 
 @Api(tags = "订单管理接口")
 @RestController
@@ -97,5 +98,62 @@ public class OrderController {
         List<Order> orders = orderService.getOrdersByCondition(queryDTO);
         
         return ResponseEntity.ok(new PageInfo<>(orders));
+    }
+
+    @ApiOperation("获取订单详情")
+    @GetMapping("/{id}")
+    public ResponseEntity<Order> getOrderById(@PathVariable Integer id) {
+        Order order = orderService.getOrderById(id);
+        if (order != null) {
+            return ResponseEntity.ok(order);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @ApiOperation("更新订单状态")
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Map<String, Object>> updateOrderStatus(
+            @PathVariable Integer id,
+            @RequestParam String status) {
+        Map<String, Object> response = new HashMap<>();
+        
+        // 验证状态值是否有效
+        if (!Arrays.asList("Pending", "Completed", "Cancelled").contains(status)) {
+            response.put("message", "无效的订单状态");
+            return ResponseEntity.badRequest().body(response);
+        }
+
+        try {
+            if (orderService.updateOrderStatus(id, status)) {
+                response.put("message", "订单状态更新成功");
+                return ResponseEntity.ok(response);
+            } else {
+                response.put("message", "订单不存在");
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            logger.error("更新订单状态失败", e);
+            response.put("message", "更新订单状态失败: " + e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
+    }
+
+    @ApiOperation("删除订单")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> deleteOrder(@PathVariable Integer id) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            if (orderService.deleteOrder(id)) {
+                response.put("message", "订单删除成功");
+                return ResponseEntity.ok(response);
+            } else {
+                response.put("message", "订单不存在");
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            logger.error("删除订单失败", e);
+            response.put("message", "删除订单失败: " + e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
     }
 } 

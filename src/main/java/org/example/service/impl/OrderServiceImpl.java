@@ -23,4 +23,19 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getOrdersByCondition(OrderQueryDTO queryDTO) {
         return orderMapper.selectByCondition(queryDTO);
     }
+
+    @Override
+    public Order getOrderById(Integer id) {
+        return orderMapper.selectById(id);
+    }
+
+    @Override
+    public boolean updateOrderStatus(Integer id, String status) {
+        return orderMapper.updateStatus(id, status) > 0;
+    }
+
+    @Override
+    public boolean deleteOrder(Integer id) {
+        return orderMapper.deleteById(id) > 0;
+    }
 } 

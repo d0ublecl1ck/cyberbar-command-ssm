@@ -2,17 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.mapper.OrderMapper">
 
-    <insert id="insert" parameterType="org.example.entity.Order">
-        INSERT INTO `order` (commodity_name, commodity_price, quantity, order_date, total_price, machine_id, user_id)
-        VALUES (#{commodityName}, #{commodityPrice}, #{quantity}, #{orderDate}, #{totalPrice}, #{machineId}, #{userId})
+    <insert id="insert" parameterType="org.example.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO orders (
+            order_date,
+            total_price,
+            status,
+            machine_id,
+            user_id,
+            commodities
+        ) VALUES (
+            #{orderDate},
+            #{totalPrice},
+            #{status},
+            #{machineId},
+            #{userId},
+            #{commodities, typeHandler=org.example.handler.JsonTypeHandler}
+        )
     </insert>
 
     <select id="selectByCondition" resultType="org.example.entity.Order">
-        SELECT id, commodity_name, commodity_price, quantity, order_date, total_price, status
-        FROM `order`
+        SELECT 
+            id,
+            order_date,
+            total_price,
+            status,
+            machine_id,
+            user_id,
+            commodities
+        FROM orders
         <where>
             <if test="commodityName != null and commodityName != ''">
-                AND commodity_name LIKE CONCAT('%', #{commodityName}, '%')
+                AND JSON_SEARCH(commodities, 'one', #{commodityName}) IS NOT NULL
             </if>
             <if test="startDate != null">
                 AND order_date &gt;= #{startDate}
@@ -23,8 +43,37 @@
             <if test="status != null and status != ''">
                 AND status = #{status}
             </if>
+            <if test="userId != null">
+                AND user_id = #{userId}
+            </if>
+            <if test="machineId != null">
+                AND machine_id = #{machineId}
+            </if>
         </where>
         ORDER BY order_date DESC
     </select>
+
+    <select id="selectById" resultType="org.example.entity.Order">
+        SELECT 
+            id,
+            order_date,
+            total_price,
+            status,
+            machine_id,
+            user_id,
+            commodities
+        FROM orders
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateStatus">
+        UPDATE orders 
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM orders WHERE id = #{id}
+    </delete>
 
 </mapper> 

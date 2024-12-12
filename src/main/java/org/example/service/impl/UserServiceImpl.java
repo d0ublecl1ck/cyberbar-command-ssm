@@ -16,6 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.example.dto.OrderQueryDTO;
+import org.example.entity.Order;
+import org.example.mapper.OrderMapper;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -38,6 +41,9 @@ public class UserServiceImpl implements UserService {
     
     @Autowired
     private AdminContext adminContext;
+
+    @Autowired
+    private OrderMapper orderMapper;
 
     @Override
     public List<User> getAllUsers() {
@@ -120,7 +126,7 @@ public class UserServiceImpl implements UserService {
             int result = userMapper.deleteById(id);
             if (result > 0) {
                 logOperation("DELETE_USER", String.format(
-                    "删除用户，用户ID: %d, 用户名: %s, 身份证号: %s, 手机号: %s",
+                    "删除用户，用��ID: %d, 用户名: %s, 身份证号: %s, 手机号: %s",
                     user.getId(),
                     user.getName(),
                     user.getIdentityCard(),
@@ -286,6 +292,23 @@ public class UserServiceImpl implements UserService {
             ));
             throw new RuntimeException("用户不存在");
         }
+
+        // 检查是否有未完成的订单
+        OrderQueryDTO queryDTO = new OrderQueryDTO();
+        queryDTO.setUserId(userId);
+        queryDTO.setStatus("Pending");
+        List<Order> pendingOrders = orderMapper.selectByCondition(queryDTO);
+        
+        if (!pendingOrders.isEmpty()) {
+            logOperation("USER_OPERATION_ERROR", String.format(
+                "下机失败，存在未完成的订单，用户ID: %d, 用户名: %s, 未完成订单数: %d",
+                user.getId(), 
+                user.getName(),
+                pendingOrders.size()
+            ));
+            throw new RuntimeException("您有未完成的订单，请先处理订单后再下机");
+        }
+
         if (!UserStatus.Online.equals(user.getStatus())) {
             logOperation("USER_OPERATION_ERROR", String.format(
                 "下机失败，用户未在使用机器，用户ID: %d, 用户名: %s",
@@ -361,7 +384,7 @@ public class UserServiceImpl implements UserService {
         updateUser.setLastOffComputerTime(endTime);
         updateUser.setBalance(user.getBalance().subtract(cost));
         
-        // 更��机器状态
+        // 更新机器状态
         Machine updateMachine = new Machine();
         updateMachine.setId(user.getMachineId());
         updateMachine.setStatus("Idle");
