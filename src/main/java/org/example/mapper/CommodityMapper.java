@@ -13,4 +13,6 @@ public interface CommodityMapper {
     int deleteById(Integer id);
     List<Commodity> selectByCondition(CommodityQueryDTO queryDTO);
     Commodity selectByName(String name);
+    int decreaseStock(@Param("id") Integer id, @Param("quantity") Integer quantity);
+    int increaseStock(@Param("id") Integer id, @Param("quantity") Integer quantity);
 } 

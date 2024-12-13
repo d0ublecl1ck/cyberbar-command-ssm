@@ -53,4 +53,16 @@
         </where>
         ORDER BY id DESC
     </select>
+    
+    <update id="decreaseStock">
+        UPDATE commodity 
+        SET stock = stock - #{quantity}
+        WHERE id = #{id} AND stock >= #{quantity}
+    </update>
+    
+    <update id="increaseStock">
+        UPDATE commodity 
+        SET stock = stock + #{quantity}
+        WHERE id = #{id}
+    </update>
 </mapper> 

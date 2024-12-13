@@ -17,6 +17,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -78,8 +79,10 @@ public class OrderController {
     @GetMapping("/search")
     public ResponseEntity<PageInfo<Order>> searchOrders(
             @ApiParam("商品名称") @RequestParam(required = false) String commodityName,
-            @ApiParam("开始日期") @RequestParam(required = false) LocalDateTime startDate,
-            @ApiParam("结束日期") @RequestParam(required = false) LocalDateTime endDate,
+            @ApiParam("开始日期") @RequestParam(required = false) 
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+            @ApiParam("结束日期") @RequestParam(required = false) 
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
             @ApiParam("订单状态") @RequestParam(required = false) String status,
             @ApiParam("用户ID") @RequestParam(required = false) Integer userId,
             @ApiParam("机器ID") @RequestParam(required = false) Integer machineId,
